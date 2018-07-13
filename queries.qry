@@ -1,0 +1,12 @@
+query selectParticipants{
+  description: "Select all participants"
+  statement:
+  		SELECT org.example.basic.SampleParticipant
+}
+
+query selectDocuments{
+  description: "Select all Documents based on their owner"
+  statement:
+  		SELECT org.example.basic.Document
+  			WHERE (owner == _$owner)
+}

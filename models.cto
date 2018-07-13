@@ -1,0 +1,32 @@
+namespace org.example.basic
+
+asset Document identified by docId {
+  o String docId
+  o String comment optional
+  o Integer version
+  o String lastmodifiedtime
+  --> SampleParticipant owner
+}
+
+participant SampleParticipant identified by participantId {
+  o String participantId
+  --> Document doc optional
+}
+
+transaction SampleTransaction {
+  --> Document doc
+  o String newComment
+}
+
+event SampleEvent {
+  --> Document doc
+  o String oldComment
+  o String newComment
+  o Integer oldVersion
+  o Integer newVersion
+}
+/**
+ * JUST FOR INITIALIZING A DEMO
+ */
+transaction SetupDemo {
+}

@@ -1,12 +1,12 @@
 query selectParticipants{
   description: "Select all participants"
   statement:
-  		SELECT org.example.basic.SampleParticipant
+  		SELECT org.docnetwork.basic.User
 }
 
 query selectDocuments{
   description: "Select all Documents based on their owner"
   statement:
-  		SELECT org.example.basic.Document
+  		SELECT org.docnetwork.basic.Document
   			WHERE (owner == _$owner)
 }

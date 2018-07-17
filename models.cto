@@ -1,28 +1,30 @@
-namespace org.example.basic
+namespace org.docnetwork.basic
 
 asset Document identified by docId {
   o String docId
-  o String comment optional
+  o updateComment[] upct optional
   o Integer version
   o String lastmodifiedtime
-  --> SampleParticipant owner
+  --> User owner
 }
 
-participant SampleParticipant identified by participantId {
-  o String participantId
+participant User identified by userId {
+  o String userId
   --> Document doc optional
 }
 
-transaction SampleTransaction {
+abstract transaction docTransaction{
   --> Document doc
-  o String newComment
+}
+transaction updateComment extends docTransaction{
+  o String comment
 }
 
 event SampleEvent {
   --> Document doc
   o String oldComment
   o String newComment
-  o Integer oldVersion
+  o	Integer oldVersion
   o Integer newVersion
 }
 /**
@@ -30,3 +32,4 @@ event SampleEvent {
  */
 transaction SetupDemo {
 }
+
